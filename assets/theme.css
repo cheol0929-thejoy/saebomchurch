@@ -1,20 +1,48 @@
-/* 시안 C — 단정한 안내판: reviewer-first; identity + registration up top, deep green header */
-:root{--accent:#3C6A0B;--paper:#F2F5EC;--line:#D5DACB}
-.site-head{background:#23361A;border:0}
-.site-head .brand,.site-head nav a{color:#F4F7EE}
-.site-head .wm{color:#B9D97A}
-nav a[aria-current="page"]{border-bottom-color:var(--green)}
-.ident{background:var(--paper);border:1px solid var(--line);border-left:8px solid var(--green);padding:18px 20px;border-radius:4px}
-.ident-in{display:flex;gap:18px;align-items:flex-start}
-.ident img{width:56px;flex:none}
-.ident h1{margin:0 0 .3em;font-size:clamp(1.8rem,6vw,2.6rem)}
-.ident .en{display:block;font-family:var(--cond);font-weight:400;letter-spacing:.06em;font-size:.5em;color:var(--soft)}
-.ident .kind{margin:0 0 .4em}
-.ident .label{margin:0;font-weight:600}
-.grid{display:grid;gap:8px 32px;margin-top:20px}
-.grid h2,.facts h2{font-size:1.15rem;border-bottom:2px solid var(--ink);padding-bottom:4px;margin:1.2em 0 .6em}
+/* 시안 D — ① 예배 우선 (September artifact 시안 5종 concept 1): navy #0E2240, sky #3CAFFF, lime #92D700; IBM Plex Sans KR (self-hosted) */
+:root{--navy:#0E2240;--navy2:#17325A;--rule:#274872;--sky:#3CAFFF;--sky2:#8CD3FF;--lime:#92D700;--sub:#9FB3CC;--accent:#1A5FA8;--paper:#F1F4F8;--line:#D3DAE3}
+.site-head{background:var(--navy);border:0}
+.site-head .brand,.site-head nav a{color:#F1F4F8}
+.site-head .brand .bn{font-weight:600}
+.site-head .wm{color:var(--sky2)}
+nav a[aria-current="page"]{border-bottom-color:var(--lime)}
+.site-head a:focus-visible{outline-color:var(--sky2)}
+main.home{padding:0}
+.hero{background:var(--navy);color:#F1F4F8}
+.hero-in{display:grid;gap:22px;padding-top:32px;padding-bottom:36px}
+.badge{display:inline-flex;gap:8px;align-items:center;font-size:.92rem;color:var(--sky2);margin:0}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--lime);flex:none}
+.hero h1{font-size:clamp(1.6rem,6vw,2.5rem);line-height:1.3;margin:10px 0 0;font-weight:600}
+.hero h1 span{display:inline-block}
+.hero-sub{margin:14px 0 0;color:var(--sub)}
+.hero-org{margin:6px 0 0;color:var(--sub);font-size:.95rem}
+.hero-org span{color:#F1F4F8;font-weight:600}
+.sermon-card{display:flex;flex-direction:column;justify-content:flex-end;gap:4px;aspect-ratio:16/10;min-height:190px;border-radius:10px;border:1px solid var(--rule);padding:18px;text-decoration:none;color:#F1F4F8;
+background:linear-gradient(160deg,#1F4B85 0%,#14305A 55%,#0B1B35 100%)}
+.sermon-card:focus-visible{outline:3px solid var(--sky2);outline-offset:2px}
+.sc-label{font-size:.85rem;color:var(--sky2)}
+.sc-title{font-size:clamp(1.25rem,4.5vw,1.6rem);line-height:1.35}
+.sc-meta{font-size:.92rem;color:#D3DDEA}
+.sc-more{margin-top:6px;font-size:.9rem;color:var(--sky2);text-decoration:underline;text-underline-offset:.2em}
+.times-wrap{border-top:1px solid var(--rule);background:var(--navy)}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;padding:0;background:var(--rule)}
+.tgrid div{background:var(--navy);padding:14px 20px;line-height:1.5}
+.tgrid small{display:block;color:var(--sub);font-size:.85rem}
+.tgrid a{color:#F1F4F8}
+.body{padding-top:28px;padding-bottom:40px}
+.body h2{font-size:1.15rem;border-top:3px solid var(--sky);padding-top:8px;margin:1.4em 0 .6em}
+.greet p{font-size:1.08rem;max-width:40em}
+.cols{display:grid;gap:0 36px}
+.tag{display:inline-block;font-size:.9rem;background:#EFF9DA;color:#3D5A00;border-radius:6px;padding:2px 10px}
+.yt a{font-weight:600}
+.facts{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--navy);border-radius:4px;padding:4px 20px 12px;margin-top:28px}
+.facts h2{border:0;padding-top:0}
+.facts .label{font-weight:600}
+.nw{white-space:nowrap}
 .facts dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0 0 1em}
 .facts dt{font-weight:600}.facts dd{margin:0}
 .apps{padding-left:1.2em}
-@media(min-width:880px){.grid{grid-template-columns:1.2fr 1fr}}
-@media(max-width:380px){.facts dl{grid-template-columns:1fr}.facts dd{margin-bottom:6px}}
+.site-foot{background:var(--navy);color:#DDE5EF;border:0}
+.site-foot a{color:var(--sky2)}
+main:not(.home) h1{border-top:4px solid var(--sky);padding-top:10px}
+@media(min-width:760px){.hero-in{grid-template-columns:1fr 1.05fr;align-items:center;padding-top:44px;padding-bottom:48px}.cols{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.facts dl{grid-template-columns:1fr}.facts dd{margin-bottom:6px}.tgrid div{padding:12px 16px}}
