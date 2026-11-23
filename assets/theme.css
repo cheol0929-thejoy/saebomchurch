@@ -122,8 +122,6 @@ p,ul,ol{margin:0 0 1em}
 .app picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .app.sky::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(11,31,58,.88) 10%,rgba(11,31,58,.15) 80%)}
 .app.lime{background:var(--navy3)}
-.app .art{position:absolute;right:28px;top:28px;opacity:.95}
-.app .art img{height:64px;width:auto}
 .app .chip{align-self:flex-start;font-size:.875rem;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:999px;margin-bottom:12px}
 .app.sky .chip{background:var(--sky);color:var(--navy)}
 .app.lime .chip{background:var(--lime);color:var(--navy)}
@@ -313,3 +311,10 @@ tbody th{font-weight:600;white-space:nowrap}
 @media(min-width:760px){.grc-a{grid-template-columns:200px 1fr;gap:40px;padding:28px}}
 @media(max-width:420px){.grc-a{grid-template-columns:1fr}.grc-a picture{width:140px}}
 .gr-link a{display:inline-flex;align-items:center;min-height:44px}
+/* RELEASE3 (owner AMENDMENT 3): install text always visible; 맨 위로 floating button */
+.pwa-t{margin:0 0 10px;line-height:1.6;word-break:keep-all}
+.pwa-sec .pwa-t{margin-top:0}
+.totop{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;width:48px;height:48px;padding:0;border-radius:50%;border:2px solid rgba(255,250,236,.7);background:var(--navy);color:#FFFAEC;font:600 1.375rem/1 var(--sans);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px rgba(10,24,48,.28)}
+.totop[hidden]{display:none}
+.pwa-btn[hidden]{display:none}
+.totop:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
