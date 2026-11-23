@@ -263,3 +263,11 @@ tbody th{font-weight:600;white-space:nowrap}
 }
 @media(max-width:560px){table.times thead{display:none}table.times tr{display:grid;grid-template-columns:max-content 1fr;column-gap:14px;border-bottom:1px solid var(--line);padding:12px 0}table.times tbody tr:last-child{border-bottom:0}table.times th,table.times td{border:0;padding:0}table.times td:nth-child(3){grid-column:1/-1;color:var(--soft);font-size:.92em}table.times td:nth-child(3):empty{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.btn:hover,.glass:hover,.card:hover,.app:hover,.steps a:hover{transform:none}}
+/* 앱으로 설치 (PWA, CEO 2026-11-23): 단추·안내 · 앱으로 열렸을 때 아이폰 상단/하단 안전 영역 */
+.pwa{margin-top:14px}
+.pwa-btn{font:inherit;font-weight:600;font-size:.9375rem;min-height:44px;padding:8px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.45);background:transparent;color:inherit;cursor:pointer}
+.pwa-btn:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.pwa-g{margin:10px 0 0;font-size:.9375rem;line-height:1.6}
+.pwa-sec{margin-top:40px}
+.pwa-sec .pwa-btn{border:0;background:var(--lime);color:var(--navy);font-size:1rem;min-height:48px;padding:8px 24px}
+@media (display-mode:standalone){.hd{padding-top:env(safe-area-inset-top,0px)}.site-foot{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}}
