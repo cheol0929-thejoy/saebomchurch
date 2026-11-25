@@ -318,3 +318,15 @@ tbody th{font-weight:600;white-space:nowrap}
 .totop[hidden]{display:none}
 .pwa-btn[hidden]{display:none}
 .totop:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+/* 말씀 page (CEO order 2026-11-25): 6-week list + 「지난 설교 더 보기」 + 3 cards 유튜브 · 새봄묵상 · 아침한권 */
+.prose .more{margin:-8px 0 0}
+.prose .more a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:700;color:var(--sky-ink)}
+.prose ul.wcards{list-style:none;padding:0;margin:8px 0 1.6em;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.prose a.wcard{display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:16px;row-gap:2px;align-content:center;height:100%;box-sizing:border-box;min-height:44px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+.prose a.wcard:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.wcard .wc-ic{grid-row:1 / span 3;align-self:center;width:56px;height:56px;border-radius:14px;display:block}
+.wcard .wc-yt,.wcard .wc-tx{display:flex;align-items:center;justify-content:center;background:var(--navy);color:#fff;font-weight:700}
+.wcard b{font-size:1.125rem;line-height:1.35}
+.wcard .wc-l{color:var(--soft);font-size:.9375rem;line-height:1.5}
+.wcard .go{color:var(--sky-ink);font-weight:700;margin-top:4px}
+@media(max-width:560px){.prose a.wcard:hover{transform:none}}
