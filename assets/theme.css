@@ -330,3 +330,17 @@ tbody th{font-weight:600;white-space:nowrap}
 .wcard .wc-l{color:var(--soft);font-size:.9375rem;line-height:1.5}
 .wcard .go{color:var(--sky-ink);font-weight:700;margin-top:4px}
 @media(max-width:560px){.prose a.wcard:hover{transform:none}}
+/* 첫 화면 알림(팝업) — 오너 AMENDMENT 4 2026-11-26 (index.html 만, assets/popup/popup.js 가 연다). 화면 위에 고정으로 덮어 본문이 밀리지 않는다. */
+.pop{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(11,31,58,.78);overscroll-behavior:contain}
+.pop[hidden]{display:none}
+.pop-box{display:flex;flex-direction:column;max-width:100%;background:var(--navy);border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.pop-a{display:block;line-height:0}
+.pop-a img{display:block;margin:0 auto;height:auto;aspect-ratio:1055/1491;width:min(calc(100vw - 32px),calc(min(85vh,100vh - 96px) * 1055 / 1491))}  /* size from the viewport, not from the loaded file: no shift when the poster arrives */
+@supports (height:100dvh){.pop-a img{width:min(calc(100vw - 32px),calc(min(85dvh,100dvh - 96px) * 1055 / 1491))}}
+.pop-a:focus-visible{outline:3px solid var(--lime);outline-offset:-3px}
+.pop-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:stretch}
+.pop-bar button{min-height:44px;min-width:44px;padding:0 16px;border:0;background:transparent;color:#fff;font:600 .9375rem/1.2 var(--sans);cursor:pointer}
+.pop-bar button:hover{background:rgba(255,255,255,.1)}
+.pop-bar button:focus-visible{outline:3px solid var(--lime);outline-offset:-3px}
+body:focus{outline:0}
+html.pop-open{overflow:hidden}  /* page does not scroll under the open popup; popup.js pads <html> by the removed scrollbar width so nothing moves sideways */  /* popup close hands focus back to the page start (body), no ring on the whole page */
