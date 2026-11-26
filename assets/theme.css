@@ -9,13 +9,13 @@ body{margin:0;background:var(--white);color:var(--ink);font-family:var(--sans);f
 img{max-width:100%;height:auto;display:block}
 a{color:var(--sky-ink);text-underline-offset:.22em;text-decoration-thickness:1px}
 a:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:4px}
-.skip{position:absolute;left:-999px;top:0;background:#000;color:#fff;padding:8px 12px;z-index:9}
+.skip{position:absolute;left:-999px;top:0;background:#000;color:#fff;padding:8px 12px;z-index:50}  /* above the header (z40) */
 .skip:focus{left:8px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 h1,h2,h3{line-height:1.3;margin:0 0 .5em;font-weight:700}
 p,ul,ol{margin:0 0 1em}
 /* header */
-.hd{background:var(--navy);color:#fff;position:relative;z-index:5}
+.hd{background:var(--navy);color:#fff;position:relative;z-index:40}  /* above the home card .pop (z30) so the open mobile menu is never covered (review R1) */
 .hd-in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
 .brand img{height:48px;width:auto;flex:0 0 auto}
@@ -170,9 +170,8 @@ p,ul,ol{margin:0 0 1em}
 @media(min-width:900px){.visit-in{grid-template-columns:320px 1fr;gap:72px}}
 /* inner pages */
 .phero{background:var(--navy);color:#fff;padding:72px 0 64px;position:relative;overflow:hidden}
-.phero::after{content:"";position:absolute;right:max(24px,calc(50% - 536px));top:50%;width:120px;height:170px;transform:translateY(-50%);background:url(mark.svg) no-repeat center/contain;opacity:.2}
-.phero .wrap{padding-right:208px}
-@media(max-width:700px){.phero::after{display:none}.phero .wrap{padding-right:20px}}
+/* (D) owner 2026-11-26: title-band watermark (.phero::after mark.svg) removed on all pages, with the 208px right padding that only made room for it; header logo unchanged */
+@media(max-width:700px){.phero .wrap{padding-right:20px}}
 .phero h1{font-family:var(--serif);font-size:clamp(2.2rem,6vw,3.5rem);margin:0 0 12px;letter-spacing:-.02em}
 .phero p{color:#D3DEEA;font-size:1.125rem;max-width:40em;margin:0}
 .prose{max-width:1120px;padding-top:56px;padding-bottom:96px}
@@ -330,17 +329,19 @@ tbody th{font-weight:600;white-space:nowrap}
 .wcard .wc-l{color:var(--soft);font-size:.9375rem;line-height:1.5}
 .wcard .go{color:var(--sky-ink);font-weight:700;margin-top:4px}
 @media(max-width:560px){.prose a.wcard:hover{transform:none}}
-/* 첫 화면 알림(팝업) — 오너 AMENDMENT 4 2026-11-26 (index.html 만, assets/popup/popup.js 가 연다). 화면 위에 고정으로 덮어 본문이 밀리지 않는다. */
-.pop{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(11,31,58,.78);overscroll-behavior:contain}
+/* 첫 화면 알림 카드 — 오너 AMENDMENT 4 2026-11-26 + 홈릴리스2 「팝업이 너무 크다」: 작은 떠 있는 카드(가림막·스크롤 막기·초점 가두기 없음). index.html 만, assets/popup/popup.js 가 연다.
+   크기: 이전 팝업의 약 1/3 — 폭 32vw(최소 110px, 최대 300px; 360px 폰 115px, PC 300px), 높이는 포스터 비율. 위치: 아래 POSITION 블록(헤더·제목 첫 줄·주요 단추를 가리지 않게). */
+.pop{position:fixed;z-index:30;width:clamp(110px,32vw,300px);background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 8px 28px rgba(11,31,58,.38)}
 .pop[hidden]{display:none}
-.pop-box{display:flex;flex-direction:column;max-width:100%;background:var(--navy);border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.45)}
 .pop-a{display:block;line-height:0}
-.pop-a img{display:block;margin:0 auto;height:auto;aspect-ratio:1055/1491;width:min(calc(100vw - 32px),calc(min(85vh,100vh - 96px) * 1055 / 1491))}  /* size from the viewport, not from the loaded file: no shift when the poster arrives */
-@supports (height:100dvh){.pop-a img{width:min(calc(100vw - 32px),calc(min(85dvh,100dvh - 96px) * 1055 / 1491))}}
+.pop-a img{display:block;width:100%;height:auto;aspect-ratio:1055/1491}
 .pop-a:focus-visible{outline:3px solid var(--lime);outline-offset:-3px}
-.pop-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:stretch}
-.pop-bar button{min-height:44px;min-width:44px;padding:0 16px;border:0;background:transparent;color:#fff;font:600 .9375rem/1.2 var(--sans);cursor:pointer}
-.pop-bar button:hover{background:rgba(255,255,255,.1)}
-.pop-bar button:focus-visible{outline:3px solid var(--lime);outline-offset:-3px}
-body:focus{outline:0}
-html.pop-open{overflow:hidden}  /* page does not scroll under the open popup; popup.js pads <html> by the removed scrollbar width so nothing moves sideways */  /* popup close hands focus back to the page start (body), no ring on the whole page */
+.pop-x{position:absolute;top:0;right:0;z-index:1;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}  /* 44x44 touch area, only a 28px round icon is drawn (less of the poster title hidden) */
+.pop-x span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(11,31,58,.85);color:#fff;font:600 .9375rem/1 var(--sans);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.pop-x:focus-visible{outline:0}.pop-x:focus-visible span{outline:3px solid var(--lime);outline-offset:1px}
+.pop-today{display:block;width:100%;min-height:36px;padding:6px 4px;border:0;background:#fff;color:var(--navy);font:500 clamp(.6875rem,2.9vw,.8125rem)/1.2 var(--sans);text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.pop-today:focus-visible{outline:3px solid var(--lime);outline-offset:-3px}
+/* POSITION (owner-literal, CEO refinement 2026-11-26): top-left, 12px under the header (popup.js sets --pop-top = header bottom + 12px), never over the header/nav.
+   It may cover part of the hero eyebrow/heading while open (dismissible). No hero layout change: the card is only known to show after first paint (date + 「오늘 하루」 check in popup.js), so moving the hero text would be a layout shift. */
+.pop{left:16px;top:var(--pop-top,76px)}
+body:focus,main:focus{outline:0}  /* card close hands focus back to the page start, no ring on the whole page */
