@@ -345,3 +345,14 @@ tbody th{font-weight:600;white-space:nowrap}
    It may cover part of the hero eyebrow/heading while open (dismissible). No hero layout change: the card is only known to show after first paint (date + 「오늘 하루」 check in popup.js), so moving the hero text would be a layout shift. */
 .pop{left:16px;top:var(--pop-top,76px)}
 body:focus,main:focus{outline:0}  /* card close hands focus back to the page start, no ring on the whole page */
+
+/* 소식/주보 page (2026-11-28): print 주보 page images + PDF */
+.jb-issue{margin:0 0 2.4em}
+.jb-issue .btns{margin:0 0 20px}
+.jb-pg{margin:0 0 20px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px}
+.jb-pg a{display:block}
+.jb-pg img{display:block;width:100%;height:auto}
+.jb-pg figcaption{color:var(--soft);font-size:.9375rem;font-weight:600;padding:10px 4px 2px}
+.jb-hint{color:var(--soft);font-size:.9375rem}
+.p-jubo .tw td:first-child{white-space:nowrap}
+@media(max-width:560px){.p-jubo .tw thead{display:none}.p-jubo .tw tr{display:grid;grid-template-columns:minmax(0,1fr);row-gap:2px;padding:14px 16px;border-bottom:1px solid var(--line)}.p-jubo .tw tbody tr:last-child{border-bottom:0}.p-jubo .tw td{padding:0;border:0}.p-jubo .tw td:first-child{font-size:.875rem;color:var(--soft)}.p-jubo .tw td:nth-child(2){font-weight:600;font-size:1.0625rem}}
